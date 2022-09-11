@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
-import 'package:package_info/package_info.dart';
+
 import 'package:reach_core/core/core.dart';
 
 import 'package:reach_feedback/reach_feedback.dart' as fb;
@@ -51,26 +49,26 @@ class FeedbackScreen extends ConsumerWidget {
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
             String version = "";
-            await PackageInfo.fromPlatform().then(
-              (PackageInfo packageInfo) {
-                version = packageInfo.version;
+            // await PackageInfo.fromPlatform().then(
+            //   (PackageInfo packageInfo) {
+            //     version = packageInfo.version;
 
-                ref.read(fb.feedbackRepoPvdr).addFeedback(
-                      feedback.copyWith(
-                          version: version,
-                          isIOS: Platform.isIOS,
-                          isAndriod: Platform.isAndroid,
-                          dateTime: DateTime.now(),
-                          isResearchersApp: true),
-                    );
+            //     ref.read(fb.feedbackRepoPvdr).addFeedback(
+            //           feedback.copyWith(
+            //               version: version,
+            //               isIOS: Platform.isIOS,
+            //               isAndriod: Platform.isAndroid,
+            //               dateTime: DateTime.now(),
+            //               isResearchersApp: true),
+            //         );
 
-                Toast.success(
-                  'feedback_toast'.tr,
-                  pop: true,
-                  times: 2,
-                );
-              },
-            );
+            //     Toast.success(
+            //       'feedback_toast'.tr,
+            //       pop: true,
+            //       times: 2,
+            //     );
+            //   },
+            // );
           }
         },
       ),
